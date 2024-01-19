@@ -13,4 +13,10 @@
         <FluentTheme />
         <StyleInclude Source="/Controls/FolderButtonTemplate.axaml"></StyleInclude>
     </Application.Styles>
+             
+    <Application.Resources>
+        <SolidColorBrush x:Key="GrayBrush">#353639</SolidColorBrush>
+        <SolidColorBrush x:Key="DarkGrayBrush">#303134</SolidColorBrush>
+        <SolidColorBrush x:Key="DarkestGrayBrush">#2a2b2f</SolidColorBrush>
+    </Application.Resources>
 </Application>

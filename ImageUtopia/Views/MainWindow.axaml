@@ -38,7 +38,7 @@
         </Grid.ColumnDefinitions>
         
         <StackPanel Grid.Column="0"
-                    Background="DimGray">
+                    Background="{DynamicResource GrayBrush}">
             <Button Classes="DefaultFont">=</Button>
             <StackPanel Margin="8"
                         Spacing="2">
@@ -61,7 +61,7 @@
         <GridSplitter Grid.Column="1" ResizeDirection="Columns" />
         <Panel Grid.Column="2"></Panel>
         <GridSplitter Grid.Column="3"  ResizeDirection="Columns"/>
-        <Panel Grid.Column="4" Background="DimGray"></Panel>
+        <Panel Grid.Column="4" Background="{DynamicResource GrayBrush}"></Panel>
     </Grid>
 
 </Window>
