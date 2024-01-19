@@ -28,9 +28,17 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <Grid ColumnDefinitions="250, *, 300">
-        <StackPanel Grid.Column="0" 
-              Background="DimGray">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" MinWidth="150" MaxWidth="350" />
+            <ColumnDefinition Width="4"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="4"></ColumnDefinition>
+            <ColumnDefinition Width="250" MinWidth="150" MaxWidth="400"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0"
+                    Background="DimGray">
             <Button Classes="DefaultFont">=</Button>
             <StackPanel Margin="8"
                         Spacing="2">
@@ -50,8 +58,10 @@
                 </ItemsControl>
             </StackPanel>
         </StackPanel>
-        <Panel Grid.Column="1"></Panel>
-        <Panel Grid.Column="2" Background="DimGray"></Panel>
+        <GridSplitter Grid.Column="1" ResizeDirection="Columns" />
+        <Panel Grid.Column="2"></Panel>
+        <GridSplitter Grid.Column="3"  ResizeDirection="Columns"/>
+        <Panel Grid.Column="4" Background="DimGray"></Panel>
     </Grid>
 
 </Window>
