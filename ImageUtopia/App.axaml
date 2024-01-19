@@ -18,5 +18,7 @@
         <SolidColorBrush x:Key="GrayBrush">#353639</SolidColorBrush>
         <SolidColorBrush x:Key="DarkGrayBrush">#303134</SolidColorBrush>
         <SolidColorBrush x:Key="DarkestGrayBrush">#2a2b2f</SolidColorBrush>
+        <SolidColorBrush x:Key="PressedGrayBrush">#525457</SolidColorBrush>
+        <SolidColorBrush x:Key="HoverGrayBrush">#444548</SolidColorBrush>
     </Application.Resources>
 </Application>

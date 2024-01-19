@@ -9,19 +9,37 @@
             <controls:FolderButtonTemplate />
         </StackPanel>
     </Design.PreviewWith>
-
+    
+    <Style Selector="ToggleButton.FolderButton">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="RenderTransform" Value="none"></Setter>
+    </Style>
+    <Style Selector="ToggleButton.FolderButton:focus">
+        <Setter Property="Background" Value="Transparent"></Setter>
+    </Style>
+    <Style Selector="ToggleButton.FolderButton:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource HoverGrayBrush}"></Setter>
+    </Style>
+    <Style Selector="ToggleButton.FolderButton:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource HoverGrayBrush}"></Setter>
+    </Style>
+    <Style Selector="ToggleButton.FolderButton:checked /template/ ContentPresenter">
+        
+        <Setter Property="Background" Value="{DynamicResource PressedGrayBrush}"></Setter>
+    </Style>
+    
     <Style Selector="controls|FolderButtonTemplate">
         <!-- Set Defaults -->
         <Setter Property="Foreground" Value="White"></Setter> 
         
         <Setter Property="Template">
             <ControlTemplate>
-                <Button HorizontalAlignment="Stretch">
+                <ToggleButton Classes="FolderButton" HorizontalAlignment="Stretch">
                     <Grid ColumnDefinitions="Auto, *">
                         <Label Grid.Column="0" HorizontalAlignment="Left" Content="{TemplateBinding FolderName}"/>
                         <Label Grid.Column="1" HorizontalAlignment="Right" Content="{TemplateBinding FolderCount}" />
                     </Grid>
-                </Button>
+                </ToggleButton>
             </ControlTemplate>
         </Setter>
     </Style>
