@@ -9,7 +9,14 @@
         x:Class="ImageUtopia.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="ImageUtopia">
+        Title="ImageUtopia"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+        CornerRadius="10"
+        ExtendClientAreaToDecorationsHint="True"
+        MinWidth="550"
+        MinHeight="250"
+        WindowStartupLocation="CenterOwner">
     
     <Window.Styles>
         <Style Selector="Button.DefaultFont">
@@ -21,8 +28,7 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <Grid ColumnDefinitions="250, *, 300"
-          Background="Gray">
+    <Grid ColumnDefinitions="250, *, 300">
         <StackPanel Grid.Column="0" 
               Background="DimGray">
             <Button Classes="DefaultFont">=</Button>
@@ -44,7 +50,7 @@
                 </ItemsControl>
             </StackPanel>
         </StackPanel>
-        <Panel Grid.Column="1" Background="Brown"></Panel>
+        <Panel Grid.Column="1"></Panel>
         <Panel Grid.Column="2" Background="DimGray"></Panel>
     </Grid>
 
