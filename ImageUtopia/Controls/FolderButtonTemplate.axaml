@@ -1,0 +1,28 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:ImageUtopia.Controls">
+    <Design.PreviewWith>
+        <StackPanel Spacing="10">
+            <controls:FolderButtonTemplate />
+            <controls:FolderButtonTemplate />
+            <controls:FolderButtonTemplate />
+            <controls:FolderButtonTemplate />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|FolderButtonTemplate">
+        <!-- Set Defaults -->
+        <Setter Property="Foreground" Value="White"></Setter> 
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Button HorizontalAlignment="Stretch">
+                    <Grid ColumnDefinitions="Auto, *">
+                        <Label Grid.Column="0" HorizontalAlignment="Left" Content="{TemplateBinding FolderName}"/>
+                        <Label Grid.Column="1" HorizontalAlignment="Right" Content="{TemplateBinding FolderCount}" />
+                    </Grid>
+                </Button>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
