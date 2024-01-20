@@ -9,15 +9,15 @@ public class FolderButtonTemplate : ToggleButton
 		AvaloniaProperty.Register<FolderButtonTemplate, bool>(nameof(IsSelected), false);
 	public static readonly StyledProperty<string> FolderNameProperty =
 		AvaloniaProperty.Register<FolderButtonTemplate, string>(nameof(FolderName), "Folder Name");
-	public static readonly StyledProperty<int> FolderCountProperty =
-		AvaloniaProperty.Register<FolderButtonTemplate, int>(nameof(FolderCount), 0);
+	public static readonly StyledProperty<string> FolderCountProperty =
+		AvaloniaProperty.Register<FolderButtonTemplate, string>(nameof(FolderCount), 0.ToString());
 	
 	public string FolderName {
 		get => GetValue(FolderNameProperty);
 		set => SetValue(FolderNameProperty, value);
 	}
 	
-	public int FolderCount {
+	public string FolderCount {
 		get => GetValue(FolderCountProperty);
 		set => SetValue(FolderCountProperty, value);
 	}

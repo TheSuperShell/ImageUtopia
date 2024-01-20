@@ -1,0 +1,40 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:ImageUtopia.Controls">
+    <Design.PreviewWith>
+        <StackPanel Spacing="10" 
+                    Background="{DynamicResource GrayBrush}"
+                    Width="400">
+            <controls:TextInputBox Height="100" />
+            <controls:TextInputBox />
+            <controls:TextInputBox />
+        </StackPanel>
+    </Design.PreviewWith>
+    
+    
+    <Style Selector="TextBox.MyTextBox">
+        <Setter Property="Background" Value="{DynamicResource DarkestGrayBrush}"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+    </Style>
+    <Style Selector="TextBox.MyTextBox:pointerover /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="{DynamicResource DarkestGrayBrush}"/>
+        <Setter Property="BorderBrush" Value="DodgerBlue"/>
+    </Style>
+    <Style Selector="TextBox.MyTextBox:focus /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="{DynamicResource DarkestGrayBrush}"/>
+        <Setter Property="BorderBrush" Value="DodgerBlue"/>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+    </Style>
+    
+
+    <Style Selector="controls|TextInputBox">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <TextBox Classes="MyTextBox" Watermark="name">
+                </TextBox>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

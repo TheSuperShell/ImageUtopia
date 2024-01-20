@@ -12,6 +12,7 @@
     <Application.Styles>
         <FluentTheme />
         <StyleInclude Source="/Controls/FolderButtonTemplate.axaml"></StyleInclude>
+        <StyleInclude Source="/Controls/TextInputBox.axaml"></StyleInclude>
     </Application.Styles>
              
     <Application.Resources>
