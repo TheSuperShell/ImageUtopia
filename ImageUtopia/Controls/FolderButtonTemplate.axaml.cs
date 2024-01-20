@@ -1,11 +1,12 @@
 ﻿using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 
 namespace ImageUtopia.Controls;
 
-public class FolderButtonTemplate : TemplatedControl
+public class FolderButtonTemplate : ToggleButton
 {
+	public static readonly StyledProperty<bool> IsSelectedProperty =
+		AvaloniaProperty.Register<FolderButtonTemplate, bool>(nameof(IsSelected), false);
 	public static readonly StyledProperty<string> FolderNameProperty =
 		AvaloniaProperty.Register<FolderButtonTemplate, string>(nameof(FolderName), "Folder Name");
 	public static readonly StyledProperty<int> FolderCountProperty =
@@ -19,5 +20,10 @@ public class FolderButtonTemplate : TemplatedControl
 	public int FolderCount {
 		get => GetValue(FolderCountProperty);
 		set => SetValue(FolderCountProperty, value);
+	}
+
+	public bool IsSelected {
+		get => GetValue(IsSelectedProperty);
+		set => SetValue(IsSelectedProperty, value);
 	}
 }
