@@ -56,14 +56,13 @@
                     <controls:FolderButtonTemplate FolderName="All" FolderCount="200"></controls:FolderButtonTemplate>
                     <controls:FolderButtonTemplate FolderName="Uncategorized" FolderCount="10"></controls:FolderButtonTemplate>
                     <controls:FolderButtonTemplate FolderName="Random" FolderCount="200"></controls:FolderButtonTemplate>
-                    <TextBlock FontSize="12" Margin="8 4 0 0">Folders</TextBlock>
+                    <TextBlock FontSize="12" Margin="0 4 0 4">Folders</TextBlock>
                     <ItemsControl ItemsSource="{Binding FolderNames}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <controls:FolderButtonTemplate
                                     FolderName="{Binding}"
-                                    FolderCount="200"
-                                    Margin="0, 0, 0, 2"/>
+                                    FolderCount="200"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
@@ -81,7 +80,40 @@
                        PointerMoved="InputElement_OnPointerMoved">
                     
                 </Panel>
-                <Panel Grid.Row="1" Margin="10" Background="Bisque"></Panel>
+                <ListBox Grid.Row="1" 
+                         ItemsSource="{Binding ImageNames}"
+                         Background="Transparent"
+                         Margin="5"
+                         SelectionMode="Multiple">
+                    <ListBox.Styles>
+                        <Style Selector="ListBoxItem">
+                            <Setter Property="Background" Value="Transparent"></Setter>
+                            <Setter Property="CornerRadius" Value="5"></Setter>
+                            <Setter Property="BorderThickness" Value="2"></Setter>
+                            <Setter Property="Margin" Value="2"></Setter>
+                            <Setter Property="Padding" Value="0"></Setter>
+                        </Style>
+                        <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Style>
+                        <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="DodgerBlue"></Setter>
+                        </Style>
+                    </ListBox.Styles>
+                    
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" Focusable="False"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Panel Background="Black" Width="100" Height="100"></Panel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </Grid>
         </Panel>
         <GridSplitter Grid.Column="3"  ResizeDirection="Columns" Background="{DynamicResource GrayBrush}"/>
@@ -95,9 +127,8 @@
                        PointerReleased="InputElement_OnPointerReleased">
                 </Panel>
                 <StackPanel Grid.Row="1" Spacing="10" Margin="2 2 8 2">
-                    <TextBlock HorizontalAlignment="Center">asdfljslf</TextBlock>
-                    <TextBox> asdlfkj</TextBox>
                     <controls:TextInputBox></controls:TextInputBox>
+                    <controls:TextInputBox Height="100"></controls:TextInputBox>
                 </StackPanel>
             </Grid>
         </Panel>
