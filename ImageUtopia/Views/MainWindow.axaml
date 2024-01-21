@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:ImageUtopia.Controls"
+        xmlns:cc="using:ImageUtopia.Controls"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="600"
         Width="1280" Height="720"
         x:Class="ImageUtopia.Views.MainWindow"
@@ -23,7 +24,6 @@
         <Style Selector="Button.DefaultFont">
             <Setter Property="FontSize" Value="18"></Setter>
         </Style>
-        
         <Style Selector="Panel.InputBox">
             <Setter Property="Background" Value="{DynamicResource DarkestGrayBrush}" />
         </Style>
@@ -53,19 +53,12 @@
             </Panel>
             <ScrollViewer Margin="2 0 0 0">
                 <StackPanel Margin="8">
-                    <controls:FolderButtonTemplate FolderName="All" FolderCount="200"></controls:FolderButtonTemplate>
-                    <controls:FolderButtonTemplate FolderName="Uncategorized" FolderCount="10"></controls:FolderButtonTemplate>
-                    <controls:FolderButtonTemplate FolderName="Random" FolderCount="200"></controls:FolderButtonTemplate>
-                    <TextBlock FontSize="12" Margin="0 4 0 4">Folders</TextBlock>
-                    <ItemsControl ItemsSource="{Binding FolderNames}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <controls:FolderButtonTemplate
-                                    FolderName="{Binding}"
-                                    FolderCount="200"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                    <controls:FoldersListBox ItemsSource="{Binding MainFolderNames}"
+                                             Name="MainFoldersListBox"
+                                             SelectedItem="null"/>
+                    <TextBlock FontSize="12" Margin="4 4 0 4">Folders</TextBlock>
+                    <controls:FoldersListBox ItemsSource="{Binding FolderNames}"
+                                             Name="CustomFoldersListBox"/>
                 </StackPanel>
             </ScrollViewer>
         </StackPanel>
@@ -84,7 +77,8 @@
                          ItemsSource="{Binding ImageNames}"
                          Background="Transparent"
                          Margin="5"
-                         SelectionMode="Multiple">
+                         SelectionMode="Multiple"
+                         Name="ImageGrid">
                     <ListBox.Styles>
                         <Style Selector="ListBoxItem">
                             <Setter Property="Background" Value="Transparent"></Setter>
@@ -104,7 +98,7 @@
                     
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal" Focusable="False"/>
+                            <WrapPanel Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     
@@ -129,6 +123,7 @@
                 <StackPanel Grid.Row="1" Spacing="10" Margin="2 2 8 2">
                     <controls:TextInputBox></controls:TextInputBox>
                     <controls:TextInputBox Height="100"></controls:TextInputBox>
+                    <cc:FoldersListBox></cc:FoldersListBox>
                 </StackPanel>
             </Grid>
         </Panel>
