@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:ImageUtopia.Controls">
     <Design.PreviewWith>
-        <StackPanel Spacing="10">
+        <StackPanel Width="200" Height="300" Background="{DynamicResource GrayBrush}">
             <controls:FolderButtonTemplate />
             <controls:FolderButtonTemplate />
             <controls:FolderButtonTemplate />
@@ -16,6 +16,7 @@
         <Setter Property="FontSize" Value="12"></Setter>
         <Setter Property="Height" Value="30"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Padding" Value="4 0 4 0"></Setter>
     </Style>
     <Style Selector="ToggleButton.FolderButton:focus">
         <Setter Property="Background" Value="Transparent"></Setter>
