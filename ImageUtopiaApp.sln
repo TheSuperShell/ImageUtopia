@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUtopia", "ImageUtopia\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUtopia.UnitTests", "ImageUtopia.UnitTests\ImageUtopia.UnitTests.csproj", "{4BC01AF8-CCF0-4DFB-A989-AB0CBCF92F4D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUtopia.Prototyping", "ImageUtopia.Prototyping\ImageUtopia.Prototyping.csproj", "{0057A0C8-73DB-48E5-972A-7BD7071EE8C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{4BC01AF8-CCF0-4DFB-A989-AB0CBCF92F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BC01AF8-CCF0-4DFB-A989-AB0CBCF92F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BC01AF8-CCF0-4DFB-A989-AB0CBCF92F4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0057A0C8-73DB-48E5-972A-7BD7071EE8C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0057A0C8-73DB-48E5-972A-7BD7071EE8C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0057A0C8-73DB-48E5-972A-7BD7071EE8C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0057A0C8-73DB-48E5-972A-7BD7071EE8C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
