@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace ImageUtopia.Utils;
 
-public readonly struct Result<T, TE> where TE : Exception
+public readonly struct Result<T, TE> where T : class where TE : Exception
 {
 	private readonly T? _result;
 	private readonly TE? _exception;

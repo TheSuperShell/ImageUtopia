@@ -2,7 +2,7 @@
 
 namespace ImageUtopia.Utils;
 
-public readonly struct Option<T>
+public readonly struct Option<T> where T : class, IEquatable<T>
 {
 	private readonly T? _value;
 
@@ -34,10 +34,14 @@ public readonly struct Option<T>
 		_ => _value
 	};
 	
-	public Option<TO> Map<TO>(Func<T, TO> mapper) => _value switch
+	public Option<TO> Map<TO>(Func<T, TO> mapper) where TO : class, IEquatable<TO> => _value switch
 	{
 		null => Option<TO>.None(),
 		_ => Option<TO>.Some(mapper(_value)),
 	};
 
+	public override int GetHashCode() =>
+		_value?.GetHashCode() ?? 0;
+	public override bool Equals(object? obj) =>
+		_value != null && obj is Option<T> option && _value.Equals(option._value);
 }
