@@ -104,8 +104,7 @@
                     
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Background="Black" HorizontalAlignment="Center"
-                                       VerticalAlignment="Center" Width="100" Height="100" Text="{Binding Name}"/>
+                            <Image Width="100" Height="100" />
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

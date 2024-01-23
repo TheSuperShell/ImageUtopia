@@ -9,16 +9,10 @@ namespace ImageUtopia.Services;
 public class ImageServices
 {
 	public async Task<Object[]> LoadImagesAsync(string path) =>
-		await Task.Run(() => 
+		await Task.Run(() =>
 			Directory.GetFiles(path)
-				.Select(filePath => new MetadataExtractor(filePath))
-				.Where(extractor => extractor.IsValidFile)
-				.Select(extractor => new Object(
-					extractor.Name, 
-					extractor.Path,
-					extractor.Extension,
-					extractor.Size,
-					extractor.IsImage,
-					extractor.Dimensions)
-				).ToArray());
+				.Select(filePath => new ObjectBuilder(filePath).Init().Build())
+				.Where(result => result.IsOk)
+				.Select(result => result.Unwrap())
+				.ToArray());
 }
