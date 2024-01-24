@@ -1,3 +1,4 @@
+using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -34,5 +35,12 @@ public partial class MainWindow : Window
 	}
 	public MainWindow() {
 		InitializeComponent();
+		DataContextChanged += MainWindow_DataContextChanged;
+	}
+
+	private void MainWindow_DataContextChanged(object? sender, EventArgs e) {
+		if (DataContext is not MainWindowViewModel viewModel) return;
+		MainFoldersListBox.SelectionChanged += (_, args) => viewModel.OnSelectedMainFolderChanged(args);
+		CustomFoldersListBox.SelectionChanged += (_, args) => viewModel.OnSelectedUserFolderChanged(args);
 	}
 }

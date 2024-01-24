@@ -1,6 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Reactive.Concurrency;
+using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using ImageUtopia.Models;
 using ImageUtopia.Services;
 using ImageUtopia.Utils;
@@ -21,10 +25,31 @@ public partial class MainWindowViewModel : ViewModelBase
 	private ObservableCollection<Folder> _mainFolders = [];
 	[ObservableProperty]
 	private ObservableCollection<Folder> _userFolders = [];
-
+	
+	[ObservableProperty]
+	private List<Folder> _selectedMainFolder = [];
+	[ObservableProperty] 
+	private List<Folder> _selectedUserFolder = [];
+	
+	[RelayCommand]
+	public void OnSelectedMainFolderChanged(SelectionChangedEventArgs e) {
+		if (SelectedMainFolder.Count == 0) {
+			return;
+		}
+		SelectedUserFolder = [];
+	}
+	[RelayCommand]
+	public void OnSelectedUserFolderChanged(SelectionChangedEventArgs e) {
+		if (SelectedUserFolder.Count == 0) {
+			return;
+		}
+		SelectedMainFolder = [];
+	}
+	
 	private void LoadFolders() {
 		MainFolders = new ObservableCollection<Folder>(_folderServices.GetMainFolders());
 		UserFolders = new ObservableCollection<Folder>(_folderServices.GetUserFolders());
+		SelectedMainFolder.Add(MainFolders[0]);
 	}
 	
 	private async void LoadImages() {
