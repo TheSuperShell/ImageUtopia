@@ -116,8 +116,11 @@
                        PointerReleased="InputElement_OnPointerReleased">
                 </Panel>
                 <StackPanel Grid.Row="1" Spacing="10" Margin="2 2 8 2">
-                    <controls:TextInputBox></controls:TextInputBox>
-                    <controls:TextInputBox Height="100"></controls:TextInputBox>
+                    <controls:TextInputBox Text="{Binding SelectedFolder.Name}"
+                                           IsEnabled="{Binding !SelectedFolder.SystemFolder}"/>
+                    <controls:TextInputBox Height="100" Watermark="Description"
+                                           Text="{Binding SelectedFolder.Description}"
+                                           IsEnabled="{Binding !SelectedFolder.SystemFolder}"/>
                 </StackPanel>
             </Grid>
         </Panel>

@@ -32,8 +32,9 @@
         <!-- Set Defaults -->
         <Setter Property="Template">
             <ControlTemplate>
-                <TextBox Classes="MyTextBox" Watermark="name">
-                </TextBox>
+                <TextBox Classes="MyTextBox" Watermark="{TemplateBinding Watermark}"
+                         Text="{TemplateBinding Text}"
+                         IsEnabled="{TemplateBinding IsEnabled}"/>
             </ControlTemplate>
         </Setter>
     </Style>

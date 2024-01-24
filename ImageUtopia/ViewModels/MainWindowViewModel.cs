@@ -30,12 +30,15 @@ public partial class MainWindowViewModel : ViewModelBase
 	private List<Folder> _selectedMainFolder = [];
 	[ObservableProperty] 
 	private List<Folder> _selectedUserFolder = [];
+	[ObservableProperty] 
+	private Folder _selectedFolder;
 	
 	[RelayCommand]
 	public void OnSelectedMainFolderChanged(SelectionChangedEventArgs e) {
 		if (SelectedMainFolder.Count == 0) {
 			return;
 		}
+		SelectedFolder = SelectedMainFolder[0];
 		SelectedUserFolder = [];
 	}
 	[RelayCommand]
@@ -43,6 +46,7 @@ public partial class MainWindowViewModel : ViewModelBase
 		if (SelectedUserFolder.Count == 0) {
 			return;
 		}
+		SelectedFolder = SelectedUserFolder[0];
 		SelectedMainFolder = [];
 	}
 	
