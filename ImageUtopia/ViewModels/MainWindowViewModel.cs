@@ -1,16 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.Reactive.Concurrency;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ImageUtopia.Models;
 using ImageUtopia.Services;
+using ImageUtopia.Utils;
+using ReactiveUI;
 
 namespace ImageUtopia.ViewModels;
 
-public partial class MainWindowViewModel(ImageServices imageLoader) : ViewModelBase
+public partial class MainWindowViewModel : ViewModelBase
 {
-	private readonly ImageServices _imageLoader = imageLoader;
+	private readonly ImageServices _imageLoader;
 	
 #pragma warning disable CA1822 // Mark members as static
 	public string Greeting => "Welcome to Avalonia!";
@@ -33,9 +35,19 @@ public partial class MainWindowViewModel(ImageServices imageLoader) : ViewModelB
 	
 	[RelayCommand]
 	private async Task LoadImages() {
-        AllImages = new ObservableCollection<Object>(await _imageLoader.LoadImagesAsync(@"C:\Users\User\Documents\NET Projects\ImageUtopiaApp\TestImages"));
+		var results = await _imageLoader.LoadImagesAsync(@"C:\Users\User\Documents\NET Projects\ImageUtopiaApp\TestImages");
+        AllImages = new ObservableCollection<Object>(results.ResultOrDebug());
+	}
+	
+	private async void LoadImagesOnStartUp() => await LoadImages();
+	
+	public MainWindowViewModel(ImageServices imageLoader) {
+		_imageLoader = imageLoader;
+		RxApp.MainThreadScheduler.Schedule(LoadImagesOnStartUp);
 	}
 
-	public MainWindowViewModel() : this(new ImageServices()) {
+	public MainWindowViewModel() {
+		_imageLoader = new ImageServices();
+		RxApp.MainThreadScheduler.Schedule(LoadImagesOnStartUp);
 	}
 }

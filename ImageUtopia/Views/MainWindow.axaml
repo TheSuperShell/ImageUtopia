@@ -104,7 +104,11 @@
                     
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Image Width="100" Height="100" />
+                            <Panel Background="Black" Width="100" Height="100" >
+                                <TextBlock Text="{Binding Name}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Panel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
@@ -123,7 +127,6 @@
                 <StackPanel Grid.Row="1" Spacing="10" Margin="2 2 8 2">
                     <controls:TextInputBox></controls:TextInputBox>
                     <controls:TextInputBox Height="100"></controls:TextInputBox>
-                    <Button Command="{Binding LoadImagesCommand}">Load images</Button>
                 </StackPanel>
             </Grid>
         </Panel>
