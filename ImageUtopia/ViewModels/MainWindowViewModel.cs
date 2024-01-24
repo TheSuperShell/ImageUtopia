@@ -30,13 +30,22 @@ public partial class MainWindowViewModel : ViewModelBase
 		"Folder 3"
 	]);
 	
-	[ObservableProperty]
 	private ObservableCollection<Object> _allImages = [new Object("default", "default", "", default, default, default)];
+	[ObservableProperty]
+	private ObservableCollection<ImageViewModel> _images = [];
 	
 	[RelayCommand]
 	private async Task LoadImages() {
 		var results = await _imageLoader.LoadImagesAsync(@"C:\Users\User\Documents\NET Projects\ImageUtopiaApp\TestImages");
-        AllImages = new ObservableCollection<Object>(results.ResultOrDebug());
+		_allImages = new ObservableCollection<Object>(results.ResultOrDebug());
+		
+		foreach (Object image in _allImages) {
+            Images.Add(new ImageViewModel(image));
+		}
+
+		foreach (var image in Images) {
+			await image.LoadImage();
+		}
 	}
 	
 	private async void LoadImagesOnStartUp() => await LoadImages();
