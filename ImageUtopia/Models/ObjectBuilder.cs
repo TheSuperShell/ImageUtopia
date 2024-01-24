@@ -12,17 +12,22 @@ public class ObjectBuilder(string path)
 	private ulong _size;
 	private bool _isImage;
 	private (uint, uint) _dimensions;
+	private bool _isInitialized;
 
 	private Exception _exception = new Exception("Not initialized");
 
 	public ObjectBuilder Init() {
 		try {
+			if (!File.Exists(path))
+				throw new FileNotFoundException("File not found", path);
 			var fileInfo = new FileInfo(path);
 			_name = fileInfo.Name;
 			_extension = fileInfo.Extension;
 			_size = (ulong)fileInfo.Length;
 			_isImage = IsImage();
 			_dimensions = _isImage ? GetDimensions(path) : default;
+			
+			_isInitialized = true;
 		}
 		catch (Exception e) {
 			_exception = e;
@@ -31,17 +36,15 @@ public class ObjectBuilder(string path)
 	}
 
 	public Result<Object, Exception> Build() {
-		if (IsValid())
+		if (_isInitialized)
 			return Result<Object, Exception>.Ok(new Object(
 				_name, path, _extension, _size, _isImage, _dimensions
 			));
-		_exception = new Exception("Invalid object");
 		return Result<Object, Exception>.Err(_exception);
 
 
 	}
 	
-	private bool IsValid() => _name is not null && _extension != null;
 	private bool IsImage() => _extension?.ToLower() switch
 	{
 		".jpg" => true,

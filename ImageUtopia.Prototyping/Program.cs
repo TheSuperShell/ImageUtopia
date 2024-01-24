@@ -4,17 +4,19 @@ const string path = @"C:\Users\User\Documents\NET Projects\ImageUtopiaApp\TestIm
 
 var images = await new ImageServices().LoadImagesAsync(path);
 
-foreach (var image in images) {
-	Console.WriteLine(image.Name);
-	Console.WriteLine(image.Path);
-	Console.WriteLine(image.Dimensions);
-	Console.WriteLine(image.IsImage);
-	Console.WriteLine(image.Extension);
-	Console.WriteLine(image.Size);
+images.ForEach(result => result.Match(res => {
+	Console.WriteLine(res.Name);
+	Console.WriteLine(res.Path);
+	Console.WriteLine(res.Dimensions);
+	Console.WriteLine(res.IsImage);
+	Console.WriteLine(res.Extension);
+	Console.WriteLine(res.Size);
 	Console.WriteLine("___________________");
-}
-
-await Task.Delay(25000);
+	return 0;
+}, exception => {
+	Console.WriteLine(exception); 
+	return 0;
+}));
 
 
 
