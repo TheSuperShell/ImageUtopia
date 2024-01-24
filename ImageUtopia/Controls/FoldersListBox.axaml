@@ -2,16 +2,17 @@
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:controls="clr-namespace:ImageUtopia.Controls"
                 x:Class="ImageUtopia.Controls.FoldersListBox"
+                xmlns:m="using:ImageUtopia.Models"
                 SelectionMode="Single"
                 Background="Transparent">
     
     <controls:FoldersListBox.ItemTemplate>
-        <DataTemplate DataType="x:String">
+        <DataTemplate DataType="m:Folder">
             <Grid ColumnDefinitions="Auto, *">
-                <TextBlock Grid.Column="0" HorizontalAlignment="Left" Text="{Binding}"/>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Left" Text="{Binding Name}"/>
                 <TextBlock Grid.Column="1" 
                            HorizontalAlignment="Right"
-                           Text="69"
+                           Text="{Binding ImageCount}"
                            Foreground="DarkGray"/>
             </Grid>
         </DataTemplate>

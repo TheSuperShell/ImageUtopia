@@ -15,7 +15,8 @@ public partial class App : Application
 
 	public override void OnFrameworkInitializationCompleted() {
 		var imageLoader = new ImageServices();
-		var mainViewModel = new MainWindowViewModel(imageLoader);
+		var folderServices = new FolderServices();
+		var mainViewModel = new MainWindowViewModel(imageLoader, folderServices);
 		
 		if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) {
 			desktop.MainWindow = new MainWindow

@@ -1,8 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Reactive.Concurrency;
-using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using ImageUtopia.Models;
 using ImageUtopia.Services;
 using ImageUtopia.Utils;
@@ -13,29 +11,23 @@ namespace ImageUtopia.ViewModels;
 public partial class MainWindowViewModel : ViewModelBase
 {
 	private readonly ImageServices _imageLoader;
+	private readonly FolderServices _folderServices;
 	
-#pragma warning disable CA1822 // Mark members as static
-	public string Greeting => "Welcome to Avalonia!";
-#pragma warning restore CA1822 // Mark members as static
-	
-	public ObservableCollection<string> MainFolderNames { get; } = new([
-		"All",
-		"Uncategorized",
-		"Random",
-	]);
-	
-	public ObservableCollection<string> FolderNames { get; } = new([
-		"Folder 1",
-		"Folder 2",
-		"Folder 3"
-	]);
-	
-	private ObservableCollection<Object> _allImages = [new Object("default", "default", "", default, default, default)];
+	private ObservableCollection<Object> _allImages = [];
 	[ObservableProperty]
 	private ObservableCollection<ImageViewModel> _images = [];
+
+	[ObservableProperty]
+	private ObservableCollection<Folder> _mainFolders = [];
+	[ObservableProperty]
+	private ObservableCollection<Folder> _userFolders = [];
+
+	private void LoadFolders() {
+		MainFolders = new ObservableCollection<Folder>(_folderServices.GetMainFolders());
+		UserFolders = new ObservableCollection<Folder>(_folderServices.GetUserFolders());
+	}
 	
-	[RelayCommand]
-	private async Task LoadImages() {
+	private async void LoadImages() {
 		var results = await _imageLoader.LoadImagesAsync(@"C:\Users\User\Documents\NET Projects\ImageUtopiaApp\TestImages");
 		_allImages = new ObservableCollection<Object>(results.ResultOrDebug());
 		
@@ -48,15 +40,12 @@ public partial class MainWindowViewModel : ViewModelBase
 		}
 	}
 	
-	private async void LoadImagesOnStartUp() => await LoadImages();
-	
-	public MainWindowViewModel(ImageServices imageLoader) {
+	public MainWindowViewModel(ImageServices imageLoader, FolderServices folderServices) {
 		_imageLoader = imageLoader;
-		RxApp.MainThreadScheduler.Schedule(LoadImagesOnStartUp);
+		_folderServices = folderServices;
+		LoadFolders();
+		RxApp.MainThreadScheduler.Schedule(LoadImages);
 	}
 
-	public MainWindowViewModel() {
-		_imageLoader = new ImageServices();
-		RxApp.MainThreadScheduler.Schedule(LoadImagesOnStartUp);
-	}
+	public MainWindowViewModel() : this(new ImageServices(), new FolderServices()) { }
 }
