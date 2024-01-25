@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Reactive.Concurrency;
 using Avalonia.Controls;
-using Avalonia.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ImageUtopia.Models;
@@ -51,9 +49,10 @@ public partial class MainWindowViewModel : ViewModelBase
 		SelectedMainFolder = [];
 	}
 	
-	private void LoadFolders() {
-		MainFolders = new ObservableCollection<Folder>(_folderServices.GetMainFolders());
-		UserFolders = new ObservableCollection<Folder>(_folderServices.GetUserFolders());
+	private async void LoadFolders() {
+		await _folderServices.LoadAllFolders();
+		MainFolders = new ObservableCollection<Folder>(_folderServices.MainFolders);
+		UserFolders = new ObservableCollection<Folder>(_folderServices.UserFolders);
 		SelectedMainFolder.Add(MainFolders[0]);
 	}
 	
@@ -73,7 +72,7 @@ public partial class MainWindowViewModel : ViewModelBase
 	public MainWindowViewModel(ImageServices imageLoader, FolderServices folderServices) {
 		_imageLoader = imageLoader;
 		_folderServices = folderServices;
-		LoadFolders();
+		RxApp.MainThreadScheduler.Schedule(LoadFolders);
 		RxApp.MainThreadScheduler.Schedule(LoadImages);
 	}
 
