@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reactive.Concurrency;
 using Avalonia.Controls;
+using Avalonia.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ImageUtopia.Models;
@@ -31,7 +32,7 @@ public partial class MainWindowViewModel : ViewModelBase
 	[ObservableProperty] 
 	private List<Folder> _selectedUserFolder = [];
 	[ObservableProperty] 
-	private Folder _selectedFolder;
+	private Folder? _selectedFolder;
 	
 	[RelayCommand]
 	public void OnSelectedMainFolderChanged(SelectionChangedEventArgs e) {

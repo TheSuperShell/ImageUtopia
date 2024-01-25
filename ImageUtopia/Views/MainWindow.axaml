@@ -117,10 +117,11 @@
                 </Panel>
                 <StackPanel Grid.Row="1" Spacing="10" Margin="2 2 8 2">
                     <controls:TextInputBox Text="{Binding SelectedFolder.Name}"
-                                           IsEnabled="{Binding !SelectedFolder.SystemFolder}"/>
-                    <controls:TextInputBox Height="100" Watermark="Description"
+                                           IsEnabled="{Binding !SelectedFolder.SystemFolder}"
+                                           Name="NameBox"/>
+                    <controls:TextInputBox Watermark="Description"
                                            Text="{Binding SelectedFolder.Description}"
-                                           IsEnabled="{Binding !SelectedFolder.SystemFolder}"/>
+                                           IsVisible="{Binding !SelectedFolder.SystemFolder}"/>
                 </StackPanel>
             </Grid>
         </Panel>

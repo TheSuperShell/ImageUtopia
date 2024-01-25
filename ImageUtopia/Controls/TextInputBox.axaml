@@ -7,7 +7,7 @@
                     Width="400">
             <controls:TextInputBox Height="100" />
             <controls:TextInputBox />
-            <controls:TextInputBox />
+            <controls:TextInputBox IsEnabled="False"/>
         </StackPanel>
     </Design.PreviewWith>
     
@@ -16,16 +16,17 @@
         <Setter Property="Background" Value="{DynamicResource DarkestGrayBrush}"/>
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="BorderBrush" Value="Black"/>
+        <Style Selector="^:pointerover /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="{DynamicResource DarkestGrayBrush}"/>
+            <Setter Property="BorderBrush" Value="DodgerBlue"/>
+        </Style>
+        <Style Selector="^:focus /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="{DynamicResource DarkestGrayBrush}"/>
+            <Setter Property="BorderBrush" Value="DodgerBlue"/>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+        </Style>
     </Style>
-    <Style Selector="TextBox.MyTextBox:pointerover /template/ Border#PART_BorderElement">
-        <Setter Property="Background" Value="{DynamicResource DarkestGrayBrush}"/>
-        <Setter Property="BorderBrush" Value="DodgerBlue"/>
-    </Style>
-    <Style Selector="TextBox.MyTextBox:focus /template/ Border#PART_BorderElement">
-        <Setter Property="Background" Value="{DynamicResource DarkestGrayBrush}"/>
-        <Setter Property="BorderBrush" Value="DodgerBlue"/>
-        <Setter Property="BorderThickness" Value="1"></Setter>
-    </Style>
+    
     
 
     <Style Selector="controls|TextInputBox">
