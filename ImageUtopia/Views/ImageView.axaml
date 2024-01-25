@@ -7,7 +7,7 @@
              xmlns:vm="clr-namespace:ImageUtopia.ViewModels"
              x:DataType="vm:ImageViewModel"
              Width="100" Height="100">
-    <Panel Width="100" Height="100" Background="Black">
+    <Panel Width="100" Height="100" Background="Transparent">
         <Image Width="100" Height="100" Stretch="Uniform" 
                Source="{Binding Image}"/>
     </Panel>
