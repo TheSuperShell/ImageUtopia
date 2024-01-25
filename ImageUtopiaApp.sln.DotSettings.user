@@ -3,5 +3,8 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c3cef7c3_002D9792_002D4d59_002D8d89_002D536e032cae1c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Option_ReturnValue" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BC01AF8-CCF0-4DFB-A989-AB0CBCF92F4D::net8.0::ImageUtopia.UnitTests.ImageTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BC01AF8-CCF0-4DFB-A989-AB0CBCF92F4D::net8.0::ImageUtopia.UnitTests.FoldersTests.MetadataLoaderNoFileTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BC01AF8-CCF0-4DFB-A989-AB0CBCF92F4D::net8.0::ImageUtopia.UnitTests.FoldersTests.MetadataLoaderLoadTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BC01AF8-CCF0-4DFB-A989-AB0CBCF92F4D::net8.0::ImageUtopia.UnitTests.FoldersTests.MetadataLoaderUpdateTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
