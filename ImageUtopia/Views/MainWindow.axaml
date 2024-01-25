@@ -122,6 +122,23 @@
                     <controls:TextInputBox Watermark="Description"
                                            Text="{Binding SelectedFolder.Description}"
                                            IsVisible="{Binding !SelectedFolder.SystemFolder}"/>
+                    <StackPanel Spacing="10">
+                        <TextBlock FontWeight="Bold" FontSize="12">Properties</TextBlock>
+                        <StackPanel>
+                            <Grid ColumnDefinitions="100, Auto">
+                                <TextBlock Grid.Column="0" HorizontalAlignment="Left">Amount</TextBlock>
+                                <TextBlock Grid.Column="1" HorizontalAlignment="Left"
+                                           FontSize="12"
+                                           Text="{Binding SelectedFolder.ImageCount}"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="100, Auto">
+                                <TextBlock Grid.Column="0" HorizontalAlignment="Left">Size</TextBlock>
+                                <TextBlock Grid.Column="1" HorizontalAlignment="Left"
+                                           FontSize="12"
+                                           Text="{Binding SelectedFolder.Size}"/>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </Panel>
