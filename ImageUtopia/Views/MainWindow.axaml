@@ -135,7 +135,7 @@
                                 <TextBlock Grid.Column="0" HorizontalAlignment="Left">Size</TextBlock>
                                 <TextBlock Grid.Column="1" HorizontalAlignment="Left"
                                            FontSize="12"
-                                           Text="{Binding SelectedFolder.Size}"/>
+                                           Text="{Binding SelectedFolder.SizeFormatted}"/>
                             </Grid>
                         </StackPanel>
                     </StackPanel>
